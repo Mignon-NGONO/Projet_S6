@@ -1,0 +1,65 @@
+
+#=============================================================
+# AKIENI  ACADEMY-Projet S6 - Simulateur d'épargne
+# semaine 6 - Premier projet
+# votre nom : NGONO-NGONO MIGNON
+# Date : 18/07/2026
+# ============================================================
+
+#Definissons notre fonction de simulation d'épargne
+def simuler_epargne(capital_initial, taux_interet, duree_annees):
+    # Dictionnaire pour stocker l'évolution du capital
+    historique = {}
+    capital_actuel = capital_initial
+    print(f"--- Simulation d'Épargne sur {duree_annees} ans ---")
+    print("=" * 60)
+    for annee in range(1, duree_annees + 1):
+        # Calcul de l'intérêt pour l'année
+        interet = capital_actuel * (taux_interet / 100)
+        capital_actuel = capital_actuel + interet
+        
+        # Enregistrement dans le dictionnaire (arrondi à 2 décimales)
+        historique[f"Année {annee}"] = round(capital_actuel, 2)
+        
+    return historique
+
+# --- Programme principal ---
+# 1. Demande des valeurs à l'utilisateur
+# On répète la demande tant que la saisie n'est pas un nombre valide
+while True:
+    try:
+        montant = float(input("Entrez le capital initial (en FCFA) : "))
+        taux = float(input("Entrez le taux d'intérêt annuel (ex: 5 pour 5%) : "))
+        annees = int(input("Entrez la durée de l'épargne (en années) : "))
+        
+        # Petit bonus : vérifier que le nombre est positif !
+        if montant <= 0 or taux < 0 or annees <= 0:
+            print("Erreur : Les valeurs doivent être positives.")
+            continue  # On recommence la boucle
+            
+        break  # Si tout est bon, on sort de la boucle !
+
+    except ValueError:
+        # Ce bloc s'exécute uniquement si l'utilisateur a rentré du texte
+        print("Erreur : Vous devez entrer un nombre valide (ex: 150000 ou 5.5), pas du texte !")
+print("=" * 60)
+print(f"\ndonnées saisies validées :")
+print(f"Capital initial : {montant} FCFA")
+print(f"Taux d'intérêt : {taux}%")
+print(f" Durée : {annees} années")
+print("=" * 60)
+# 2. Lancement de la simulation
+resultats = simuler_epargne(montant, taux, annees)
+
+# 3. Affichage propre des résultats
+print("\n--- Évolution de votre capital ---")
+print("=" * 60)
+for annee, solde in resultats.items():
+    print(f"{annee} : {solde} FCFA")
+
+# 4. Petit calcul bilan
+gain_total = round(resultats[f"Année {annees}"] - montant, 2)
+print("=" * 60)
+print(f"\nGain total réalisé : {gain_total} FCFA")
+print(f"Capital final après {annees} ans : {resultats[f'Année {annees}']} FCFA")
+print("=" * 60)
