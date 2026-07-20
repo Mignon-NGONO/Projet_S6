@@ -1,22 +1,24 @@
-"""
-Projet S6 : Analyseur de Budget Personnel et Taux d'Épargne
-Nom : 
-Date : 
-"""
+
+#===============================================================================
+# AKIENI  ACADEMY-Projet S6 - Gestion du budget personnel et du taux d'épargne
+# semaine 6 - Premier projet
+# votre nom : NGONO-NGONO MIGNON
+# Date : 18/07/2026
+# ==============================================================================
 
 # ==============================================================================
 # SECTION 1 : PROGRAMME PRINCIPAL (STRUCTURE GLOBALE)
 # ==============================================================================
 
 def main():
+    print("=" * 60)
     print("=== PROJET S6 : ANALYSEUR DE BUDGET PERSONNEL ===")
-    
+    print("=" * 60)
+
     # TODO : 1. Demander le revenu mensuel total de l'utilisateur
-    # Utiliser 'demander_nombre_positif()'
     revenu = demander_nombre_positif("Entrez votre revenu mensuel total (en FCFA) : ")
     
-    # TODO : 2. Demander la liste des catégories de dépenses (ex: Loyer, Nourriture, Transport, Loisirs)
-    # Astuce : Découper la saisie avec .split(",") ou faire une boucle
+    # TODO : 2. Demander la liste des catégories de dépenses (ex: Loyer, Nourriture, Transport, Loisirs, etc.)
     categories = input("Entrez les catégories de dépenses séparées par des virgules (ex: Loyer, Nourriture, Transport) : ").split(",")
     
     
@@ -116,11 +118,15 @@ def afficher_conseil_financier(revenu, total_depenses, epargne, taux_epargne):
        - Si 0 <= taux_epargne < 20 % -> Afficher un conseil pour réduire certaines dépenses.
        - Si epargne < 0 (dépenses > revenu) -> Afficher une alerte de DÉFICIT / Surendettement !
     """
+
+    print("=" * 60)
     print("\n=== BILAN FINANCIER ===")
+    print("\n" + "=" * 60)
     print(f"Revenu mensuel : {revenu:.2f} FCFA")
     print(f"Total des dépenses : {total_depenses:.2f} FCFA")
     print(f"Épargne restante : {epargne:.2f} FCFA")
     print(f"Taux d'épargne : {taux_epargne:.2f}%")
+    print("=" * 60)
 
     if taux_epargne >= 20:
         print("Conseil : Votre gestion financière est excellente !")
